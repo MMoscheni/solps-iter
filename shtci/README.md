@@ -4,8 +4,8 @@
 
 - See introduction of `shtci_kin.F` for theoretical details
 - Modifications to original `b2stbc_phys.F` labeled "MMM" in the script
-- Activated by setting `'b2stbc_bceni_03_style'` switch in b2mn.dat to `'1'`
-- Diagnosed by setting `'b2stbc_diagno'` switch in b2mn.dat to `'2'`
+- Activated by setting `'b2stbc_bceni_03_style' '1'` in `b2mn.dat`
+- Diagnosed by setting `'b2stbc_diagno' '2'` in `b2mn.dat`
 
 ## Current assumptions
 
