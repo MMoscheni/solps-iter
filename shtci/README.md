@@ -4,7 +4,7 @@ Simil-kinetic sheath internal-ion-energy transmission coefficient:
 - Activated by setting 'b2stbc_bceni_03_style' switch in b2mn.dat to '1'
 - Diagnosed by setting 'b2stbc_diagno' switch in b2mn.dat to '2'
 
-Assumptions:
+Current assumptions:
 
 - Pure hydrogenic plasma (no impurities)
 - Unitary adiabatic coefficient in computing sound speed (GAMMAI = 1)
