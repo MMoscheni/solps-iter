@@ -12,8 +12,6 @@
 *   ..input arguments (unchanged on exit)
       real (kind=R8) :: te, ti, shtci0, strength
       integer :: ncall, diagno, ib, iy
-*   ..internal parameters
-      real (kind=R8) :: reference
 *   ..output argument (unspecified on entry)
       real (kind=R8) :: shtci
 *
@@ -37,10 +35,6 @@
 *       minimum shtci allowed (preventing shtci = 0 - CHECK independence!)
 *     - strength = enipar('W'/'E',2):
 *	tuneable parameter to avoid abrupt changes in BC (eventually 1.0 required)
-*
-*     Internal parameters:
-*     - reference = default shtci = enipar('W'/'E',1) [= 1.5]
-*	TO BE CHANGED IF enipar('W'/'E',1) != 1.5 IN PARENT SIMULATION
 *
 *     Output parameters:
 *     shtci - sheath heat transmission coefficient for ions
@@ -80,6 +74,7 @@
 *           - pure hydrogenic plasma (no impurities)
 *           - adiabatic coefficient GAMMAI = 1 
 *     - raise warning if is.gt.2 (impurities are present)
+*     - Internal parameters: variable instead of 1.5 as reference
 *     - ???
 *
 *  3. contacts
@@ -92,9 +87,6 @@
 *   ..procedures
 	  intrinsic max
       external subini, subend, bcint, xertst
-*
-*   ..initilisations
-    data reference/1.5_R8/
 *
 *-----------------------------------------------------------------------
 *.computations
@@ -122,7 +114,7 @@
 *     reminder: b2stbc_phys.F enforces boundary conditions cell-by-cell
 *
       shtci = 0.5 * (5 * ti/te - te/ti - 1)
-      shtci = reference * (1.0 + strength * (shtci - reference))
+      shtci = 1.5 * (1.0 + strength * (shtci - 1.5))
       shtci = max(shtci, shtci0)
 *
 *     informing user if shtci < shtci0
