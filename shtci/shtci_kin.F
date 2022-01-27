@@ -10,10 +10,10 @@
       use b2mod_b2cmpa
       implicit none
 *   ..input arguments (unchanged on exit)
-      real (kind=R8) :: te, ti, shtci0
+      real (kind=R8) :: te, ti, shtci0, strength
       integer :: ncall, diagno, ib, iy
 *   ..internal parameters
-      real (kind=R8) :: default
+      real (kind=R8) :: reference
 *   ..output argument (unspecified on entry)
       real (kind=R8) :: shtci
 *
@@ -39,7 +39,7 @@
 *	tuneable parameter to avoid abrupt changes in BC (eventually 1.0 required)
 *
 *     Internal parameters:
-*     - default = default shtci = enipar('W'/'E',1) [= 1.5]
+*     - reference = default shtci = enipar('W'/'E',1) [= 1.5]
 *	TO BE CHANGED IF enipar('W'/'E',1) != 1.5 IN PARENT SIMULATION
 *
 *     Output parameters:
@@ -89,12 +89,12 @@
 *
 *-----------------------------------------------------------------------
 *.declarations
-*
-*   ..initilisations
-    data default/1.5_R8/
 *   ..procedures
 	  intrinsic max
       external subini, subend, bcint, xertst
+*
+*   ..initilisations
+    data reference/1.5_R8/
 *
 *-----------------------------------------------------------------------
 *.computations
@@ -122,7 +122,7 @@
 *     reminder: b2stbc_phys.F enforces boundary conditions cell-by-cell
 *
       shtci = 0.5 * (5 * ti/te - te/ti - 1)
-      shtci = default * (1.0 + strength * (shtci - default))
+      shtci = reference * (1.0 + strength * (shtci - reference))
       shtci = max(shtci, shtci0)
 *
 *     informing user if shtci < shtci0
