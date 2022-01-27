@@ -1,7 +1,7 @@
 *-----------------------------------------------------------------------
 *.specification
 
-      subroutine shtci_kin(te, ti, shtci0, shtci,
+      subroutine shtci_kin(te, ti, shtci0, strength, shtci,
      .                     ncall, diagno, ib, iy)
       use b2mod_types
       use b2mod_constants
@@ -12,6 +12,8 @@
 *   ..input arguments (unchanged on exit)
       real (kind=R8) :: te, ti, shtci0
       integer :: ncall, diagno, ib, iy
+*   ..internal parameters
+      real (kind=R8) :: default
 *   ..output argument (unspecified on entry)
       real (kind=R8) :: shtci
 *
@@ -29,11 +31,16 @@
 *     [D. Tskhakaya, 2017, Plasma Phys. Control. Fusion, vol. 59, pp. 114001]
 *
 *     Input parameters:
-*
 *     - te: electron temperature
 *     - ti: ion temperature
 *     - shtci0 = enipar('W'/'E',1) [= 1.5 if SOLPS-ITER default value]:
 *       minimum shtci allowed (preventing shtci = 0 - CHECK independence!)
+*     - strength = enipar('W'/'E',2):
+*	tuneable parameter to avoid abrupt changes in BC (eventually 1.0 required)
+*
+*     Internal parameters:
+*     - default = default shtci = enipar('W'/'E',1) [= 1.5]
+*	TO BE CHANGED IF enipar('W'/'E',1) != 1.5 IN PARENT SIMULATION
 *
 *     Output parameters:
 *     shtci - sheath heat transmission coefficient for ions
@@ -82,7 +89,9 @@
 *
 *-----------------------------------------------------------------------
 *.declarations
-
+*
+*   ..initilisations
+    data default/1.5_R8/
 *   ..procedures
 	  intrinsic max
       external subini, subend, bcint, xertst
@@ -107,6 +116,7 @@
 *     reminder: b2stbc_phys.F enforces boundary conditions cell-by-cell
 *
       shtci = 0.5 * (5 * ti/te - te/ti - 1)
+      shtci = default * (1.0 + strength * (shtci - default))
       shtci = max(shtci, shtci0)
 *
 *     informing user if shtci < shtci0
