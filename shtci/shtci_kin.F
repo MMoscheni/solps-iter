@@ -114,7 +114,7 @@
 *     reminder: b2stbc_phys.F enforces boundary conditions cell-by-cell
 *
       shtci = 0.5 * (5 * ti/te - te/ti - 1)
-      shtci = 1.5 * (1.0 + strength * (shtci - 1.5))
+      shtci = 1.5 + strength * (shtci - 1.5)
       shtci = max(shtci, shtci0)
 *
 *     informing user if shtci < shtci0
