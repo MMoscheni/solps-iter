@@ -6537,7 +6537,8 @@ cxpb code segment analog to b2tfhe
                       endif
                       call shtci_kin (bcint(te,nx,ny,IY,IB),
      .                                bcint(ti,nx,ny,IY,IB), 
-     .                                ENIPAR(IB,1),shtci,
+     .                                ENIPAR(IB,1),ENIPAR(IB,2),
+     .                                shtci,
      .                                ncall,diagno,ib,iy)
                       shi0(BC_LIST_X(IY,IB),BC_LIST_Y(IY,IB),1)=
      .                shi0(BC_LIST_X(IY,IB),BC_LIST_Y(IY,IB),1)-UUOUT*
@@ -6630,7 +6631,8 @@ cxpb code segment analog to b2tfhe
                       endif
                       call shtci_kin (bcint(te,nx,ny,IY,IB),
      .                                bcint(ti,nx,ny,IY,IB), 
-     .                                ENIPAR(IB,1),shtci,
+     .                                ENIPAR(IB,1),ENIPAR(IB,2),
+     .                                shtci,
      .                                ncall,diagno,ib,iy)
                       shi0(BC_LIST_X(IY,IB),BC_LIST_Y(IY,IB),1)=
      .                shi0(BC_LIST_X(IY,IB),BC_LIST_Y(IY,IB),1)-UUOUT*
