@@ -113,6 +113,12 @@
         write (*,*) '         - hp: GAMMAI = 1'
       endif
 *
+*   ..WARNING
+      if (strength.eq.0.0_R8) then
+        write (*,*) '    MMM: shtci_kin.F with strength = 0.0 !'
+        write (*,*) '         enipar(,2) needed...'
+      endif
+*
 *     reminder: b2stbc_phys.F enforces boundary conditions cell-by-cell
 *
       shtci = 0.5 * (5 * ti/te - te/ti - 1)
