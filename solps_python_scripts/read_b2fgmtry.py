@@ -3,7 +3,7 @@ import numpy as np
 from read_ifield import read_ifield
 from read_rfield import read_rfield
 
-def read_b2fgmtry(file = None):
+def read_b2fgmtry(file = None, save = None):
 
     # gmtry = read_b2fgmtry(file)
     #
@@ -98,5 +98,9 @@ def read_b2fgmtry(file = None):
     ## Close file
 
     fid.close()
+
+    if save is True:
+        location = file.split("b2fgmtry")[0]
+        pickle.dump(gmtry, open(location + "gmtry.pkl", "wb"))
 
     return gmtry

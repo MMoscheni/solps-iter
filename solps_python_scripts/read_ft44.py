@@ -2,7 +2,7 @@
 import numpy as np
 from read_ft44_rfield import read_ft44_rfield 
 
-def read_ft44(file = None):
+def read_ft44(file = None, save = None):
 
     # [neut,wld] = read_ft44(file)
     #
@@ -203,5 +203,9 @@ def read_ft44(file = None):
 
     fid.close()
 
+    if save is True:
+        location = file.split("fort.44")[0]
+        pickle.dump(neut, open(location + "ft44_neut.pkl", "wb"))
+        pickle.dump(wdl, open(location + "ft44_wld.pkl", "wb"))
 
     return (neut, wld)

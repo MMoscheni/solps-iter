@@ -1,9 +1,10 @@
 
 import numpy as np
+import pickle
 from read_ifield import read_ifield
 from read_rfield import read_rfield
 
-def read_b2fplasmf(file = None, nx = None, ny = None, ns = None):
+def read_b2fplasmf(file = None, nx = None, ny = None, ns = None, save = None):
 
     # [gmtry,state] = read_b2fplasmf(file,nx,ny,ns)
     #
@@ -233,5 +234,10 @@ def read_b2fplasmf(file = None, nx = None, ny = None, ns = None):
     state['sclrtio']      = read_rfield(fid,'sclrtio'     ,[ns+1,nstra])
 
     fid.close()
+
+    if save is True:
+        location = file.split("b2fplasmf")[0]
+        pickle.dump(gmtry, open(location + "gmtry.pkl", "wb"))
+        pickle.dump(state, open(location + "state.pkl", "wb"))
 
     return (gmtry, state)
