@@ -197,9 +197,10 @@ def read_ft44(file = None, save = None):
         # neut['EDENI_INT_B2'] = read_ft44_rfield(fid,[nion,nstrata])
     else:
         # MMM
-        # neut['eneutrad = read_ft44_rfield(fid,[nx,ny,natm])
-        # neut['eneutrad'] = read_ft44_rfield(fid,ver,'eneutrad',[nx,ny,natm])
-        pass
+        neut['eneutrad'] = read_ft44_rfield(fid,ver,'eneutrad',[nx,ny,natm])
+        neut['emolrad']  = read_ft44_rfield(fid,ver,'emolrad', [nx,ny,nmol])
+        neut['eionrad']  = read_ft44_rfield(fid,ver,'eionrad', [nx,ny,nion])
+        
 
     fid.close()
 
