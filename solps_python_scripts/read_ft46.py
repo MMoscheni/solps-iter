@@ -1,6 +1,6 @@
 
 import numpy as np
-from read_ft44_rfield import read_ft44_rfield 
+from solps_python_scripts.read_ft44_rfield import read_ft44_rfield 
 
 def read_ft46(file = None, save = None):
 
