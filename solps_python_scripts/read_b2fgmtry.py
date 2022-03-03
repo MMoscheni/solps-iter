@@ -38,7 +38,7 @@ def read_b2fgmtry(file = None, save = None):
     # Expected array sizes, gmtry
     qcdim = [nx+2, ny+2]
     if version >= '03.001.000':
-    qcdim  = qcdim = [nx+2, ny+2, 2]
+        qcdim = [nx+2, ny+2, 2]
 
     gmtry = {}
 
