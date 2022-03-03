@@ -1,8 +1,8 @@
 import numpy as np
 
-from read_ft33 import read_ft33
-from read_ft34 import read_ft34
-from read_ft35 import read_ft35
+from solps_python_scripts.read_ft33 import read_ft33
+from solps_python_scripts.read_ft34 import read_ft34
+from solps_python_scripts.read_ft35 import read_ft35
 
 def read_triangle_mesh(fort33 = None, fort34 = None, fort35 = None):
 
