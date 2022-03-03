@@ -1,7 +1,7 @@
 
 import numpy as np
-from read_ifield import read_ifield
-from read_rfield import read_rfield
+from solps_python_scripts.read_ifield import read_ifield
+from solps_python_scripts.read_rfield import read_rfield
 
 def read_b2fgmtry(file = None, save = None):
 
