@@ -24,7 +24,7 @@ def read_b2fgmtry(file = None, save = None):
     ## Get version of the b2fstate file
 
     line    = fid.readline()
-    version = line[7:]
+    version = line[7:17]
 
     print("read_b2fgmtry -- file version " + version)
 
