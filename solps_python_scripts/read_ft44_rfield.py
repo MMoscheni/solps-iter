@@ -21,7 +21,6 @@ def read_ft44_rfield(fid = None, ver = None, fieldname = None, dims = None):
     if ver >= 20160829:
         # Search the file until identifier 'fieldname' is found
         line = fid.readline()
-        print(fieldname)
         while line.find(fieldname) == -1:
             line = fid.readline()
             if line == "":
