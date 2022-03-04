@@ -44,6 +44,8 @@ def read_b2fstate(file = None, save = None):
     nx  = int(dim[0])
     ny  = int(dim[1])
     ns  = int(dim[2])
+    
+    state['ns'] = ns
 
     fluxdim  = [nx+2,ny+2,2]
     fluxdimp = [nx+2,ny+2]
