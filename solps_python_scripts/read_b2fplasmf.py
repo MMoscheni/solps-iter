@@ -29,7 +29,7 @@ def read_b2fplasmf(file = None, nx = None, ny = None, ns = None, save = None):
     ## Get version of the b2fstate file
 
     line    = fid.readline()
-    version = line[7:]
+    version = line[7:17]
 
     print('read_b2fplasmf -- file version ' + version)
 
