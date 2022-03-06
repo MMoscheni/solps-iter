@@ -89,8 +89,11 @@ def read_b2fplasmf(file = None, nx = None, ny = None, ns = None, save = None):
     state['ne0']    = read_rfield(fid,'ne0'   ,[nx+2,ny+2])
     state['ne2']    = read_rfield(fid,'ne2'   ,[nx+2,ny+2])
     state['nep']    = read_rfield(fid,'nep'   ,[nx+2,ny+2])
-    state['ni']     = read_rfield(fid,'ni'    ,[nx+2,ny+2,ns])
-    state['ni0']    = read_rfield(fid,'ni0'   ,[nx+2,ny+2,ns])
+    
+    # MMM: 2022.03.06
+    # state['ni']     = read_rfield(fid,'ni'    ,[nx+2,ny+2,ns])
+    # state['ni0']    = read_rfield(fid,'ni0'   ,[nx+2,ny+2,ns])
+    
     state['pb']     = read_rfield(fid,'pb'    ,[nx+2,ny+2])
     state['po']     = read_rfield(fid,'po'    ,[nx+2,ny+2])
     state['po0']    = read_rfield(fid,'po0'   ,[nx+2,ny+2])
