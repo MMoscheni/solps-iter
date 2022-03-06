@@ -28,7 +28,7 @@ def read_ft34(file):
    for i in range(ntria):
       line = fid.readline().split()
       for j in range(1, len(line)):
-         cells[i, j - 1] = int(line[j])
+         cells[i, j - 1] = int(line[j] - 1)
 
    # close file
    fid.close()
