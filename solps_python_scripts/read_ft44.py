@@ -50,6 +50,10 @@ def read_ft44(file = None, save = None):
     natm = int(line[0])
     nmol = int(line[1])
     nion = int(line[2])
+    
+    neut['natm'] = natm
+    neut['nmol'] = nmol
+    neut['nion'] = nion
 
     # for now, ignore reading species labels
     for i in range(natm):
